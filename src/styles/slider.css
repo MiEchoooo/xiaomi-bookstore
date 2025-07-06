@@ -1,0 +1,22 @@
+/* Increase specificity by adding the Swiper class */
+.hero-section .swiper-horizontal > .swiper-pagination-progressbar,
+.hero-section .swiper-pagination-progressbar.swiper-pagination-horizontal,
+.hero-section
+  .swiper-vertical
+  > .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
+.hero-section
+  .swiper-pagination-progressbar.swiper-pagination-vertical.swiper-pagination-progressbar-opposite {
+  position: absolute !important;
+  width: 50% !important;
+  height: 0.5% !important;
+  bottom: 10px !important; /* Adjust this value to position it correctly */
+  left: 25% !important;
+  border-radius: 20px !important;
+}
+
+.hero-section
+  .swiper-pagination-progressbar
+  .swiper-pagination-progressbar-fill {
+  background: rgb(55 65 81) !important;
+  border-radius: 20px !important;
+}
