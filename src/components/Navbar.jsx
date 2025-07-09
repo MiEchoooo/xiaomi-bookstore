@@ -17,24 +17,45 @@ function Navbar() {
               id="navbar-ul"
               className="flex gap-8 justify-center items-center"
             >
-              <NavLink
-                id="nav-home"
-                to="/"
-                className={({ isActive }) =>
-                  isActive ? "font-semibold-dot" : "text-white"
-                }
-              >
-                Home
-              </NavLink>
-              <li id="nav-shop">
-                <a href="#shop">Shop</a>
+              <li id="nav-home">
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive ? "font-semibold-dot" : "text-white"
+                  }
+                >
+                  Home
+                </NavLink>
               </li>
-              <li id="nav-about">About Us</li>
+
+              <li id="nav-shop">
+                <NavLink
+                  to="/shop"
+                  className={({ isActive }) =>
+                    isActive ? "font-semibold-dot" : "text-white"
+                  }
+                >
+                  Shop
+                </NavLink>
+              </li>
+
+              <li id="nav-about">
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    isActive ? "font-semibold-dot" : "text-white"
+                  }
+                >
+                  About Us
+                </NavLink>
+              </li>
             </ul>
           </div>
+
           <div id="navbar-logo" className="flex justify-center">
             <span className="logo font-bold text-lg">BIBILIO</span>
           </div>
+
           <div
             id="navbar-icons"
             className="flex justify-center gap-10 items-center"
