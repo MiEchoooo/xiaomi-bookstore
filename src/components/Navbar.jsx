@@ -1,22 +1,33 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ searchQuery, setSearchQuery }) {
   const [isSearchBtn, setIsSearchBtn] = useState(false);
+  const navigate = useNavigate();
 
+  // 切换放大镜/关闭按钮
   const toggleSearch = () => {
     setIsSearchBtn((prev) => !prev);
+  };
+
+  // 输入变化时更新搜索关键词
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  // 点击搜索按钮或回车提交表单
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/shop");
   };
 
   return (
     <header id="navbar-header">
       <nav id="navbar-nav">
         <div id="navbar-grid" className="grid grid-cols-3 py-5 items-center">
+          {/* 左侧导航链接 */}
           <div id="navbar-links" className="text-sm">
-            <ul
-              id="navbar-ul"
-              className="flex gap-8 justify-center items-center"
-            >
+            <ul id="navbar-ul" className="flex gap-8 justify-center items-center">
               <li id="nav-home">
                 <NavLink
                   to="/"
@@ -27,7 +38,6 @@ function Navbar() {
                   Home
                 </NavLink>
               </li>
-
               <li id="nav-shop">
                 <NavLink
                   to="/shop"
@@ -38,7 +48,6 @@ function Navbar() {
                   Shop
                 </NavLink>
               </li>
-
               <li id="nav-about">
                 <NavLink
                   to="/about"
@@ -52,18 +61,17 @@ function Navbar() {
             </ul>
           </div>
 
+          {/* 中间 logo */}
           <div id="navbar-logo" className="flex justify-center">
             <span className="logo font-bold text-lg">BIBILIO</span>
           </div>
 
-          <div
-            id="navbar-icons"
-            className="flex justify-center gap-10 items-center"
-          >
+          {/* 右侧图标 + 搜索栏 */}
+          <div id="navbar-icons" className="flex justify-center gap-10 items-center">
             <span id="search-form-span">
               <form
                 id="search-form"
-                action="#"
+                onSubmit={handleSubmit}
                 className={`${isSearchBtn ? "show-search" : ""} search`}
               >
                 <input
@@ -71,6 +79,8 @@ function Navbar() {
                   type="search"
                   placeholder="Type something..."
                   className="search-inp"
+                  value={searchQuery}
+                  onChange={handleInputChange}
                 />
                 <div
                   id="search-btn"
